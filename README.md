@@ -1,7 +1,7 @@
 
 # Docker Base Image
 
-Base image using Docker
+Base image using Docker testing how "low can you go".
 
 ## Table of Contents
 - [Docker Base](#dockerbase-history) 
