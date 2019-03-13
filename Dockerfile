@@ -1,5 +1,14 @@
+# Base Image
+
 FROM scratch
+MAINTAINER Glitchdata <admin@glitchdata.com>
+
 COPY files/helloworld.txt /
-CMD [“echo”,”Hello”]
+COPY files/hello /
+
+#RUN echo 'hello there'
+
+CMD ["./hello"]
+
 
 

@@ -12,8 +12,9 @@ echo -------------------------------------------------------------
 echo -a build : Docker: Build
 echo -a start : Docker: Run Container
 echo -a stop : Docker: Stop Container
-echo -a remove : Docker: Kill & Remove a Containers
+echo -a remove : Docker: Kill Remove a Containers
 echo -a killall : Docker: Kill all Containers
+echo -a killalli : Docker: Delete all Images
 echo -a logs : Docker: View Logs 
 echo =============================================================
 
@@ -68,10 +69,12 @@ case "$ACTION" in
     echo ===========================================================
     echo Docker Run
     echo ===========================================================
-    docker run -d \
-    $IMAGE \
-    --name $CONTAINER \
-    /bin/bash
+    docker run --name $CONTAINER -it -d $IMAGE
+
+#    docker run -d \
+#    $IMAGE \
+#    --name $CONTAINER \
+#    /bin/bash
     ;;
 
   "stop" )
@@ -98,7 +101,12 @@ case "$ACTION" in
     docker stop $(docker ps -aq)
     ;;
 
-
+  "killalli" )
+    echo ===========================================================
+    echo Docker Delete All Images
+    echo ===========================================================
+    docker rmi $(docker images -a -q)
+    ;;
 
 
   "logs" )
@@ -121,7 +129,7 @@ case "$ACTION" in
     # Default option.
     # Empty input (hitting RETURN) fits here, too.
     echo
-    echo "Not a recognized option."
+    echo "Please use a recognized option."
     ;;
 esac
 
