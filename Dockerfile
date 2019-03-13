@@ -1,5 +1,5 @@
 FROM scratch
-COPY hola-mundo /
+COPY files/helloworld.txt /
 CMD [“echo”,”Hello”]
 
 
